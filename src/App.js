@@ -16,7 +16,7 @@ import LoginPage from './containers/Login/index';
 
 import AccountPage from './containers/Account/index';
 import RentHistoryPage from './containers/RentHistory/index';
-import contact from './assets/banner/contact.png';
+// import contact from './assets/banner/contact.png';
 import NotFound from './containers/NotFound/index';
 import Register from './components/Register/index';
 import Verify from './components/Register/verify';
@@ -27,6 +27,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useSelector } from 'react-redux';
 import { useEffect, useRef, useState } from 'react';
 
+import MessengerCustomerChat from 'react-messenger-customer-chat';
 function App() {
   const { accountLoading } = useSelector(state => state.accountReducer)
   const { isLogin, adminLoading } = useSelector(state => state.adminReducer)
@@ -82,6 +83,11 @@ function App() {
             {/* <div className="contact">
               <a href="https://www.facebook.com/Thu%C3%AA-Acc-110458054565244" target="_blank"><img src={contact} /></a>
             </div> */}
+            <MessengerCustomerChat
+              pageId="110458054565244"
+              appId="531255731225475"
+              htmlRef="https://rent-fe.herokuapp.com/"
+            />
           </div>
         }
       </LoadingMask>
