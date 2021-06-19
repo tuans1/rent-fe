@@ -1,0 +1,28 @@
+.banner {
+    /* position: relative; */
+    background-image: url('../../assets/banner/banner.jpg');
+    background-size: auto;
+    height: 401px;
+}
+
+.navbar {
+    background: #333;
+    position: fixed;
+    width: 100%;
+    z-index: 500;
+}
+
+.nav-left {
+    width: 100%;
+}
+
+.nav-right {
+    width: 100%;
+}
+.link:hover{
+    background-color: yellowgreen;
+}
+.link, .nav-item {
+    color: white !important;
+
+}

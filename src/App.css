@@ -1,0 +1,45 @@
+body, .wrapper {
+    position: relative;
+    height: 100%;
+    background: #333;
+    min-height: 100vh;
+}
+
+.contact {
+    position: fixed;
+    bottom: 0px;
+    right: 0;
+}
+
+.pu-bchatbox {
+    cursor: pointer;
+    width: 270px;
+    height: 40px;
+    padding: 10px;
+    text-transform: uppercase;
+    font-size: 15px;
+    color: #ffffff;
+    background: #43609c;
+    position: relative;
+    -webkit-border-radius: 5px 5px 0 0;
+    -moz-border-radius: 5px 5px 0 0;
+    border-radius: 5px 5px 0 0;
+}
+.rc-loading-icon{
+    top: 28% !important;
+    margin-left: -25px;
+}
+.rc-loading-icon-default {
+    position: fixed;
+    animation-duration: 1s !important;
+    width: 50px !important;
+    height: 50px !important;
+}
+
+.Toastify__toast-container {
+    margin-top: 50px !important;
+}
+
+.btn {
+    color: white !important;
+}

@@ -1,0 +1,27 @@
+.account {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.card {
+    margin-bottom: 10px !important;
+}
+
+.card-info {
+    padding-bottom: 10px;
+}
+
+.rent-status {
+    font-size: 14px;
+}
+
+.rent-status>p {
+    margin: 0;
+    padding-top: 7px;
+}
+
+.btn-rent {
+    width: 100%;
+}

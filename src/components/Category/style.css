@@ -1,0 +1,12 @@
+.category-wrap {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.category-left, .category-right {
+    display: flex;
+}
+.category-link:not(:last-child){
+    padding-right: 10px;
+}

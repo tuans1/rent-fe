@@ -1,0 +1,12 @@
+.history-wrap {
+    height: 100%;
+}
+
+h3 {
+    color: white;
+}
+
+#table-history-rent {
+    background-color: white;
+    border-radius: 5px;
+}
