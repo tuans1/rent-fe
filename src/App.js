@@ -14,8 +14,6 @@ import Transaction from './components/Transaction/index';
 import AdminGame from './containers/Admin/game';
 import LoginPage from './containers/Login/index';
 
-import Chat from './components/Chat';
-
 import AccountPage from './containers/Account/index';
 import RentHistoryPage from './containers/RentHistory/index';
 import contact from './assets/banner/contact.png';
@@ -60,7 +58,6 @@ function App() {
     <div>
       <LoadingMask loading={loading} text={"loading..."} >
         <ToastContainer />
-        <Chat />
         {role === "admin" ?
           <Switch>
             <Route path="/admin" exact component={AdminAccount} />
@@ -82,9 +79,9 @@ function App() {
                 <Route component={NotFound} />
               </Switch>
             </div>
-            <div className="contact">
+            {/* <div className="contact">
               <a href="https://www.facebook.com/Thu%C3%AA-Acc-110458054565244" target="_blank"><img src={contact} /></a>
-            </div>
+            </div> */}
           </div>
         }
       </LoadingMask>
