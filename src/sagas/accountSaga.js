@@ -10,7 +10,6 @@ const delay = time => new Promise(resolve => setTimeout(resolve, time));
 function* fetchAccountSaga({ payload }) {
     try {
         const data = yield call(Api, '/account?page=' + payload + '&game=', 'get')
-
         yield put({ type: constants.FETCH_ACCOUNT_SUCCESS, data })
     } catch (err) {
         yield call(Error, { message: "Error !" })
@@ -33,8 +32,9 @@ function* fetchCreateAccountSaga({ payload }) {
 function* fetchEditAccountSaga({ payload }) {
     try {
         yield call(Api, '/account/edit', 'put', JSON.stringify(payload));
+        const data = yield call(Api, '/account?page=', 'get')
+        yield put({ type: constants.FETCH_ACCOUNT_SUCCESS, data })
         yield call(Success, { message: "Cập nhật Acc thành công !" })
-        yield fetchAccountSaga();
     } catch (err) {
         yield call(Error, { message: "Error !" })
         console.log(err)
@@ -79,8 +79,13 @@ function* fetchRentSaga({ payload }) {
 
 function* fetchSearchAccountSaga({ payload }) {
     try {
-        if (payload.game !== "") {
+        if (typeof (payload.game) === "string") {
+            console.log("RUN")
             const data = yield call(Api, '/account?game=' + payload.game, 'get')
+            yield put({ type: constants.FETCH_ACCOUNT_SUCCESS, data })
+        } else {
+            const data = yield call(Api, '/account?active=' + payload.active, 'get')
+            console.log(data)
             yield put({ type: constants.FETCH_ACCOUNT_SUCCESS, data })
         }
     } catch (err) {

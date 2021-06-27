@@ -121,7 +121,7 @@ export default function AdminAccount(props) {
                     <tbody>
                         {props.accountsList && props.accountsList.map((acc, i) => {
                             return (
-                                <tr key={acc._id}>
+                                <tr key={i}>
                                     <th scope="row">{i + 1}</th>
                                     <td>{acc.acc}</td>
                                     <td>{acc.name}</td>

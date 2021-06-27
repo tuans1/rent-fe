@@ -19,6 +19,7 @@ function Transaction() {
     useEffect(() => {
         dispatch(transactionAction.onFetchTransactionHistory())
     }, [])
+
     return (
         <>
             <div style={{ textAlign: "center", width: "400px", position: 'relative', left: "34%", color: "white", margin: "20px 0" }}>
@@ -44,7 +45,7 @@ function Transaction() {
                     <Button type="submit" className="btn-login btn-primary" form="hook-form"  >XÁC NHẬN</Button>
                 </form>
             </div>
-            <div className="history-wrap">
+            <div className="history-wrap" style={{paddingBottom : "5em"}}>
                 <h2 style={{ color: "white" }}>LỊCH SỬ NẠP THẺ</h2>
                 <table className="table table-striped table-hover" id="table-transaction-history">
                     <thead>

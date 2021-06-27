@@ -20,11 +20,15 @@ const initialState = {
 const accountReducer = (state = initialState, action) => {
     switch (action.type) {
         case FETCH_ACCOUNT_SUCCESS:
-            action.data.map(x => state.accounts.push(x))
-            if (state.searchGame !== "") {
-                state.accountLength = 4
+            if (localStorage.getItem("role") === "admin") {
+                return {...state,accounts : action.data}
             } else {
-                state.accountLength = action.data.length
+                action.data.map(x => state.accounts.push(x))
+                if (state.searchGame !== "") {
+                    state.accountLength = 4
+                } else {
+                    state.accountLength = action.data.length
+                }
             }
             return { ...state, }
         case RESET_ACCOUNT_LIST:

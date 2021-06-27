@@ -3,6 +3,8 @@ import { call, put, takeLatest } from 'redux-saga/effects';
 import * as constants from '../reducers/adminReducer';
 import Api from '../request';
 import { Success, Error, Warn } from '../common/toastify';
+import Swal from 'sweetalert2'
+
 // get list account in Account + Admin PAGE
 const delay = time => new Promise(resolve => setTimeout(resolve, time));
 function* fetchAdminSaga({ payload }) {
@@ -38,13 +40,22 @@ function* fetchAdminInfoSaga() {
 
 function* fetchAdminFacebookSaga({ payload }) {
     try {
-        const data = yield call(Api, '/admin/login-fb', 'post', JSON.stringify(payload))
-        yield put({ type: constants.FETCH_LOGIN_SUCCESS, payload: data })
-        localStorage.setItem("token", data.token);
-        localStorage.setItem("name", data.name);
-        localStorage.setItem("id", data.id);
-        localStorage.setItem("role", data.role);
-        localStorage.setItem("money", data.money);
+        const data = yield call(Api, '/login-fb', 'post', JSON.stringify(payload))
+        if (data) {
+            localStorage.setItem("token", data.token);
+            localStorage.setItem("name", data.name);
+            localStorage.setItem("id", data.id);
+            localStorage.setItem("role", data.role);
+            localStorage.setItem("money", data.money);
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Đăng nhập thành công',
+                showConfirmButton: false,
+                timer: 3000
+            })
+            yield put({ type: constants.FETCH_LOGIN_SUCCESS, payload: data })
+        }
     } catch (e) {
         yield call(Error, { message: "Error !" })
         console.log(e)
@@ -53,7 +64,7 @@ function* fetchAdminFacebookSaga({ payload }) {
 
 function* fetchRegisterAminSaga({ payload }) {
     try {
-        const data = yield call(Api, '/admin/register', 'post', JSON.stringify(payload))
+        const data = yield call(Api, '/register', 'post', JSON.stringify(payload))
         if (data.duplicate) {
             yield call(Error, { message: data.duplicate })
         }

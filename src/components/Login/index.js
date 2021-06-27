@@ -24,7 +24,6 @@ export default function Login(props) {
         }
     }, [isLogin])
     const responseFacebook = (response) => {
-        console.log(response)
         props.loginFacebook(response)
     }
     return (

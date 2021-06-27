@@ -14,9 +14,11 @@ import Transaction from './components/Transaction/index';
 import AdminGame from './containers/Admin/game';
 import LoginPage from './containers/Login/index';
 
+import Chat from './components/Chat';
+
 import AccountPage from './containers/Account/index';
 import RentHistoryPage from './containers/RentHistory/index';
-// import contact from './assets/banner/contact.png';
+import contact from './assets/banner/contact.png';
 import NotFound from './containers/NotFound/index';
 import Register from './components/Register/index';
 import Verify from './components/Register/verify';
@@ -26,7 +28,6 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useSelector } from 'react-redux';
 import { useEffect, useRef, useState } from 'react';
-
 import MessengerCustomerChat from 'react-messenger-customer-chat';
 function App() {
   const { accountLoading } = useSelector(state => state.accountReducer)
@@ -59,6 +60,7 @@ function App() {
     <div>
       <LoadingMask loading={loading} text={"loading..."} >
         <ToastContainer />
+        {/* <Chat /> */}
         {role === "admin" ?
           <Switch>
             <Route path="/admin" exact component={AdminAccount} />
@@ -86,7 +88,7 @@ function App() {
             <MessengerCustomerChat
               pageId="110458054565244"
               appId="531255731225475"
-              htmlRef="https://rent-fe.herokuapp.com/"
+              htmlRef="http://localhost:3000"
             />
           </div>
         }

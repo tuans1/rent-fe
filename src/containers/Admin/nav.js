@@ -27,7 +27,7 @@ export default function Nav() {
                             <Link to="/admin/price" className="nav-link" href="#">Quản Lý USER<span className="sr-only">(current)</span></Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Tổng Hợp Giao Dịch</a>
+                            <Link to="/admin/total-transaction" className="nav-link" href="#">Tổng Hợp Giao Dịch</Link>
                         </li>
                     </ul>
                     <div>

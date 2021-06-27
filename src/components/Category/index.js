@@ -27,7 +27,7 @@ function Category() {
             <div className="category-right">
                 <div className="category-link" onClick={() => onSearch({ active: true })}>
                     <Button>SẴN SÀNG</Button>
-                </div><div className="category-link" onClick={() => onSearch({ rent: true })}>
+                </div><div className="category-link" onClick={() => onSearch({ active: false })}>
                     <Button>ĐANG ĐƯỢC THUÊ</Button>
                 </div>
             </div>

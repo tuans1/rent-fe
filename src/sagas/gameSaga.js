@@ -2,7 +2,7 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import * as constants from '../reducers/gameReducer';
 import Api from '../request';
-
+import { Success, Error, Warn } from '../common/toastify';
 // get list account in Account + Admin PAGE
 function* fetchGameSaga() {
     try {
@@ -18,6 +18,7 @@ function* fetchCreateGameSaga({ payload }) {
     try {
         yield call(Api, '/game/create', 'post', JSON.stringify(payload));
         yield fetchGameSaga();
+        yield call(Success, { message: "Cập nhật Game thành công !" })
     } catch (err) {
         console.log(err)
     }
@@ -28,6 +29,7 @@ function* fetchDeleteGameSaga({ payload }) {
     try {
         yield call(Api, '/game/delete', 'delete', JSON.stringify({ id: payload }));
         yield fetchGameSaga();
+        yield call(Success, { message: "Xóa Game thành công !" })
     } catch (err) {
         console.log(err)
     }
