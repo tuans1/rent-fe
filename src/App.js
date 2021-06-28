@@ -29,6 +29,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useSelector } from 'react-redux';
 import { useEffect, useRef, useState } from 'react';
 import MessengerCustomerChat from 'react-messenger-customer-chat';
+import TotalTransaction from './components/Admin/total-transaction';
 function App() {
   const { accountLoading } = useSelector(state => state.accountReducer)
   const { isLogin, adminLoading } = useSelector(state => state.adminReducer)
@@ -66,6 +67,7 @@ function App() {
             <Route path="/admin" exact component={AdminAccount} />
             <Route path="/admin/game" exact component={AdminGame} />
             <Route path="/admin/price" exact component={AdminPricePage} />
+            <Route path="/admin/total-transaction" exact component={TotalTransaction} />
           </Switch>
           : <div className="wrapper">
             <Nav />

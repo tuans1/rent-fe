@@ -40,6 +40,7 @@ export default function AdminAccount(props) {
             ...acc
         })
     }
+
     const onDeleteAccount = () => {
         props.onDeleteAccount(account._id);
         setShow(false);
@@ -60,7 +61,7 @@ export default function AdminAccount(props) {
     return (
         <>
             <div className="container">
-                <h3>QUẢN LÝ TÀI KHOẢN</h3>
+                <h3 style={{ color: "black",margin : "15px 0" }}>QUẢN LÝ TÀI KHOẢN</h3>
                 <Modal show={show} onHide={handleClose} animation={false}>
                     <Modal.Header closeButton>
                         <Modal.Title>{account._id ? "Xoá tài khoản" : watch("id") ? "Sửa tài khoản" : "Thêm tài khoản"}</Modal.Title>

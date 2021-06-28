@@ -58,7 +58,7 @@ export default function AdminGame(props) {
     return (
         <>
             <div className="container">
-                <h3>QUẢN LÝ GAME</h3>
+                <h3 style={{ color: "black",margin : "15px 0" }}>QUẢN LÝ GAME</h3>
                 <Modal show={show} onHide={handleClose} animation={false}>
                     <Modal.Header closeButton>
                         <Modal.Title>{game._id ? "Xoá GAME" : "Thêm GAME"}</Modal.Title>

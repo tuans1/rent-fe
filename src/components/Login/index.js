@@ -42,7 +42,7 @@ export default function Login(props) {
                     textButton="ĐĂNG NHẬP BẰNG FACEBOOK"
                     size="metro"
                 />
-                <h3>HOẶC</h3>
+                <h3 className="or">HOẶC</h3>
                 <form id="hook-form" onSubmit={handleSubmit(onSubmit)}>
                     <div className="mb-3">
                         <input className="form-control" style={{ textAlign: "center" }} placeholder="Email đăng nhập" {...register("email", { required: true })} />
