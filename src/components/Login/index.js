@@ -28,8 +28,6 @@ export default function Login(props) {
     }
     return (
         <>
-
-
             <div className="login-wrap" style={{ textAlign: "center", width: "300px", position: 'relative', left: "38%" }}>
                 <h2 className="label_login">ĐĂNG NHẬP</h2>
                 <FacebookLogin

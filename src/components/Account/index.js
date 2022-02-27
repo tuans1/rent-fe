@@ -12,27 +12,22 @@ import * as priceAction from '../../reducers/priceReducer';
 
 function Account(props) {
     const dispatch = useDispatch();
-    const { accounts, accountLength, searchGame } = useSelector(state => state.accountReducer)
+    const { accounts, accountLength, page } = useSelector(state => state.accountReducer)
     const { prices } = useSelector(state => state.priceReducer)
     const [rentalTime, setRentalTime] = useState();
-    const [page, setPage] = useState(1);
     const [loadMore, setLoadMore] = useState(true)
     const isInitialMount = useRef(true);
     useEffect(() => {
         if (isInitialMount.current) {
-            dispatch(action.onResetAccountList())
             isInitialMount.current = false;
+            dispatch(action.onFetchAccount(page));
+            dispatch(priceAction.onFetchPrice())
         } else {
-            if (accountLength < 4 || searchGame !== "") {
-                setLoadMore(false)
-                setPage(1)
-            } else {
+            if (page !== 1) {
                 dispatch(action.onFetchAccount(page));
-                dispatch(priceAction.onFetchPrice())
-                setLoadMore(true)
             }
         }
-    }, [page, accounts, accountLength])
+    }, [page])
     const timeLeft = (time, timeUpdate) => {
         const then = moment(new Date(timeUpdate)).add(time, 'hours');
         const now = moment(new Date);
@@ -46,12 +41,12 @@ function Account(props) {
         const then = moment(new Date(acc.updateAt)).add(acc.rentalTime, 'hours');
         const now = moment(new Date);
         if (then > now && acc.isRent) {
-            return (<Button className="btn btn-primary btn-rent" style={{ width: "100%" }}>Đang được thuê</Button>)
+            return (<Button className="btn btn-danger btn-rent" style={{ width: "100%" }}>Đang được thuê</Button>)
         } else {
             if (acc.isActive) {
                 return (<Button className="btn btn-primary btn-rent" onClick={() => onHandleRent(acc._id)} style={{ width: "100%" }}>Thuê Ngay</Button>)
             } else {
-                return (<Button className="btn btn-primary btn-rent" style={{ width: "100%" }}>CHỜ ĐỔI PASS</Button>)
+                return (<Button className="btn btn-warning btn-rent" style={{ width: "100%" }}>Chờ đổi pass</Button>)
             }
         }
     }
@@ -60,15 +55,19 @@ function Account(props) {
     }
     const onHandleRent = (accId) => {
         if (localStorage.getItem("id")) {
+            if (rentalTime === undefined) {
+                alert("CHỌN MỨC GIÁ")
+                return
+            };
             props.onHandleRent({ accId, rentalTime })
         } else {
             alert("VUI LÒNG ĐĂNG NHẬP")
         }
     }
     const getMoreAccount = () => {
-        setPage(page + 1);
+        dispatch(action.onLoadPage())
     }
-
+    console.log(page, '-page');
     return (
         <>
             <Category />
@@ -109,7 +108,7 @@ function Account(props) {
                     </div>
                 </div>
                 <div style={{ textAlign: "center", padding: "50px 0" }}>
-                    {loadMore && <button className="btn btn-outline-warning" onClick={getMoreAccount}>XEM THÊM TÀI KHOẢN</button>}
+                    {accountLength === 8 && <button className="btn btn-outline-warning" onClick={getMoreAccount}>XEM THÊM TÀI KHOẢN</button>}
                 </div>
             </div>
         </>

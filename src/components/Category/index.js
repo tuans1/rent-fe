@@ -14,7 +14,7 @@ function Category() {
     return (
         <div className="category-wrap">
             <div className="category-left">
-                <div className="category-link" onClick={() => searchGame !== "" ? onSearch({ game: "" }) : ""}>
+                <div className="category-link" onClick={() => onSearch({ game: "" })}>
                     <Button>TẤT CẢ</Button>
                 </div>
                 <div className="category-link" onClick={() => onSearch({ game: "GTA" })}>

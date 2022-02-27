@@ -15,7 +15,6 @@ function RentHistory(props) {
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Tên Tài Khoản</th>
-                            <th scope="col">ID</th>
                             <th scope="col">Mật khẩu</th>
                             <th scope="col">THỜI GIAN THUÊ</th>
                             <th scope="col">Từ</th>
@@ -28,7 +27,6 @@ function RentHistory(props) {
                                 <tr key={history._id}>
                                     <th scope="row">{i + 1}</th>
                                     <td>{history.acc}</td>
-                                    <td>{history.name}</td>
                                     <td>{history.password}</td>
                                     <td>{history.time} Giờ</td>
                                     <td>{moment(history.createAt).format("DD-MM-YYYY HH:mm:ss")}</td>

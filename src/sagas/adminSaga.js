@@ -10,6 +10,7 @@ const delay = time => new Promise(resolve => setTimeout(resolve, time));
 function* fetchAdminSaga({ payload }) {
     try {
         const data = yield call(Api, '/login', 'post', JSON.stringify(payload))
+        console.log(data);
         if (data.admin) {
             yield put({ type: constants.FETCH_LOGIN_SUCCESS, payload: data.admin })
             localStorage.setItem("token", data.admin.token);

@@ -59,7 +59,7 @@ function* fetchRentSaga({ payload }) {
         payload.userId = localStorage.getItem("id");
         const message = yield call(Api, '/admin/check-money', 'post', JSON.stringify(payload));
         if (message.error) {
-            yield call(delay, 1500);
+            yield call(delay, 1000);
             yield call(Warn, { message: message.error })
             yield put({ type: constants.SET_OFF_LOADING })
             return;
@@ -82,14 +82,15 @@ function* fetchRentSaga({ payload }) {
 
 function* fetchSearchAccountSaga({ payload }) {
     try {
+        console.log('search here');
         if (typeof (payload.game) === "string") {
             const data = yield call(Api, '/account?role=' + localStorage.getItem("role") + '&game=' + payload.game, 'get')
             console.log(data)
-            yield put({ type: constants.FETCH_ACCOUNT_SUCCESS, data })
+            yield put({ type: constants.FETCH_SEARCH_ACCOUNT_SUCCESS, data })
         } else {
             const data = yield call(Api, '/account?role=' + localStorage.getItem("role") + '&active=' + payload.active, 'get')
             console.log(data)
-            yield put({ type: constants.FETCH_ACCOUNT_SUCCESS, data })
+            yield put({ type: constants.FETCH_SEARCH_ACCOUNT_SUCCESS, data })
         }
     } catch (err) {
         yield call(Error, { message: "Error !" })

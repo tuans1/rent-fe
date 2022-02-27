@@ -10,7 +10,6 @@ export default function RentHistoryPage() {
     useEffect(() => {
         dispatch(action.onFetchHistoryRent());
     }, [])
-
     return (
         <RentHistory
             histories={histories} />
